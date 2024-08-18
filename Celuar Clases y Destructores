@@ -1,0 +1,120 @@
+// Tarea 1 Azael Martinez Flores
+									//El codigo de seguridad es 12 
+#include <iostream>
+using namespace std;
+
+class celular {
+private: //Atributos
+	char marca[20], compania[20], nombr_pers[20];
+	int numero, pila_max, seguri = 0;
+	float temperatura;
+
+public: //Metodos
+	celular() { //Constructor1
+		strcpy_s(marca, "Realme");
+		strcpy_s(compania, "Telcel");
+		strcpy_s(nombr_pers, "Juan");
+		numero = 222494549;
+		temperatura = 12;
+		pila_max = 100;
+
+	}
+	celular(char m[20], char c[20], char n[20], int num, int t, int p) { //Constructor2
+		strcpy_s(marca, m);
+		strcpy_s(compania, c);
+		strcpy_s(nombr_pers, n);
+		numero = num;
+		temperatura = t;
+		pila_max = p;
+	}
+
+	void modifi() {
+		temperatura++;
+		pila_max--;
+	}
+
+	char* getMarca() { return marca; } //Mostar datos
+	void setMarca(char m[20]) { strcpy_s(marca, m); } //Acceder al dato
+
+	char* getCompania() { return compania; }
+	void setCompania(char c[20]) { strcpy_s(compania, c); }
+
+	int getTemperatura() { return temperatura; }
+	void setTemperatura(int t) { temperatura = t; }
+
+	int getPila() { return numero; }
+	void setPila(int p) { pila_max = p; }
+
+	void setNombre() {
+		char auxnom[20];
+		cout << "Escribe el nombre actual" << endl;
+		cin >> auxnom;
+		if (strcmp(auxnom,nombr_pers) == 0) {
+			cout << "Escribe el nuevo nombre: " << endl;
+			cin >> nombr_pers;
+			cout << "Nombre cambiado\n" << endl;
+		}
+		else {
+			cout << "Nombre Incorrecto \n" << endl;
+		}
+	}
+	char* getNombre() { return nombr_pers; }
+
+	void setNum() {
+		int aux;
+		cout << "Escribe el numero de celular Actual" << endl;
+		cin >> aux;
+		if (aux == numero) {
+			cout << "Escribe el nuevo numero: " << endl;
+			cin >> numero;
+			cout << "Numero cambiado\n" << endl;
+		}
+		else {
+			cout << "Numero Incorrecto \n" << endl;
+		}
+	}
+	int getNum() { return numero; }
+
+	void muestradatos() {
+		cout << "Nombre de la Marca: " << marca << endl;
+		cout << "Nombre de la compania: " << compania << endl;
+		cout << "Nombre de la persona: " << nombr_pers << endl;
+		cout << "Numero celular: " << numero << endl;
+		cout << "Temperatura del celular: " << temperatura << endl;
+		cout << "La pila es de: " << pila_max << endl;
+		cout << "Escribe el codigo de seguridad para cambiar datos: " << endl;
+		cin >> seguri;
+		if (seguri == 12) {
+			cout << "Datos cambiados\n" << endl;
+		}
+		else {
+			cout << "No puedes modificar datos Fin del Programa" << endl;
+			exit(0);
+		}
+	}
+
+
+};
+
+void main() {
+	celular celular1;
+
+	celular1.muestradatos();
+
+	celular1.modifi();
+	char aux1[20] = "Motorora";
+	celular1.setMarca(aux1);
+	celular1.setNombre();
+	celular1.muestradatos();
+
+	celular1.modifi();
+	char aux2[20] = "Movistar";
+	celular1.setCompania(aux2);
+	celular1.muestradatos();
+
+	celular1.modifi();
+	celular1.setNum();
+	celular1.muestradatos();
+
+	cout << "Fin del programa" << endl;
+}
