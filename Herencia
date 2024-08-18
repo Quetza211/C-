@@ -1,0 +1,152 @@
+// Tarea 2 Herencia en POO
+// Azael Martinez Flores
+
+#include <iostream>
+using namespace std;
+
+class Abuelo {
+protected://Atributos a Heredar 4
+	string hab_piano, hab_futbol, col_ojo, col_piel;
+	int numero;
+public: //Metodos
+	Abuelo() { //Constructor Generico
+		hab_piano = "Si";
+		hab_futbol = "Si";
+		col_ojo = "Cafe";
+		col_piel = "Morena";
+		numero = 1;
+	}
+	//Funcion Gets
+	string getHab_piano() { return hab_piano;  }
+	string getHab_futbol() { return hab_futbol; }
+	string getCol_ojo() { return col_ojo; }
+	string getCol_piel() { return col_piel; }
+	int getNumero() { return numero; }
+	void setNumero(int num) { numero = num; }
+
+	void mostabue() {//Mostrar Datos del Abuelo
+		cout << "Datos del Abuelo" << endl;
+		cout << "Numero de generacion: " << numero << endl;
+		cout << "Habilidad para el piano: " << hab_piano << endl;
+		cout << "Habilidad para el futbol: " << hab_futbol << endl;
+		cout << "Color de ojos: " << col_ojo << endl;
+		cout << "Color de piel: " << col_piel << endl;
+		cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< endl;
+	}
+	//Funciones
+	void jugarfutbol() {
+		cout << "Abuelo ha empezado a jugar futbol" << endl;
+	}
+	void tocarpiano() {
+		cout << "Abuelo ha empezado a tocar el piano\n" << endl;
+	}
+
+	~Abuelo(){
+		cout << "Abuelo ha sido destruido" << endl;
+	}
+};
+
+class Papa:public Abuelo { //Trae la herencia de Abuelos
+protected://Atributos a Heredar 4
+	string hab_guitarra, disciplina, resistencia,creatividad;
+public: //Metodos
+	Papa(){ //Constructor Generico
+		hab_guitarra = "Si";
+		disciplina = "Alta";
+		resistencia = "Alta";
+		creatividad = "Alta";
+	}
+	//Funcion Get
+	string getHab_guitarra() { return hab_guitarra; }
+	string getDisciplina() { return disciplina; }
+	string getResistencia() { return resistencia; }
+	string getCreatividad() { return creatividad; }
+
+	void mostpapa() {//Muestra los Datos del Abuelo y del Papa
+		cout << "Datos Heredados del Abuelo y Con los datos del Papa" << endl;
+		cout << "Numero de generacion: " << numero << endl;
+		cout << "Habilidad para el piano: " << hab_piano << endl;
+		cout << "Habilidad para el futbol: " << hab_futbol << endl;
+		cout << "Color de ojos: " << col_ojo << endl;
+		cout << "Color de piel: " << col_piel << endl;
+		cout << "Habilidad con la guitarra: " << hab_guitarra << endl;
+		cout << "Disciplina: " << disciplina << endl;
+		cout << "Resistencia: " << resistencia << endl;
+		cout << "Creatividad: " << creatividad << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;;
+	}
+	//Funciones
+	void crear() {
+		cout << "Papa ha empezado crear algo " << endl;
+	}
+	void tocarguitarra() {
+		cout << "Papa ha empezado a tocar la guitarra\n" << endl;
+	}
+	~Papa() {
+		cout << "Papa ha sido destruido" << endl;
+	}
+};
+
+class Hijo:public Papa{
+protected: //Atributos
+	string hab_vidjuegos,memoria,hab_pc,baile;
+public:
+	Hijo() { //Constructor Gnerico
+		hab_vidjuegos = "Si";
+		memoria = "Alta";
+		hab_pc = "Si";
+		baile = "Si";
+	}
+	//Funcion Get
+	string getHab_vidjuegos() { return hab_vidjuegos; }
+	string getMemoria() { return memoria; }
+	string getHab_pc() { return hab_pc; }
+	string getBaile() { return baile; }
+
+	void mosthijo() {// Muestra los Datos del Abuelo,Papa y Hijo
+		cout << "Herencia del Abuelo,Papa y sus propios atributos" << endl;
+		cout << "Numero de generacion: " << numero << endl;
+		cout << "Habilidad para el piano: " << hab_piano << endl;
+		cout << "Habilidad para el futbol: " << hab_futbol << endl;
+		cout << "Color de ojos: " << col_ojo << endl;
+		cout << "Color de piel: " << col_piel << endl;
+		cout << "Habilidad con la guitarra: " << hab_guitarra << endl;
+		cout << "Disciplina: " << disciplina << endl;
+		cout << "Resistencia: " << resistencia << endl;
+		cout << "Creatividad: " << creatividad << endl;
+		cout << "Habilidad para videojuegos: " << hab_vidjuegos << endl;
+		cout << "Memoria: " << memoria << endl;
+		cout << "Habilidad para la PC: " << hab_pc << endl;
+		cout << "Habilidad para el baile: " << baile << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+	}
+	//Funcione
+	void jugarvideojuegos() {
+		cout << "Hijo ha empezado a jugar videojuegos" << endl;
+	}
+	void programar() {
+		cout << "Hijo ha empezado a programar\n" << endl;
+	}
+
+	~Hijo() {
+		cout << "Hijo ha sido destruido" << endl;
+	}
+};
+
+void main() {
+	cout << "Herencia Abuelos,Papa,Hijo" << endl;
+	Hijo Jerarquia;
+	Jerarquia.mostabue();
+	Jerarquia.jugarfutbol();
+	Jerarquia.tocarpiano();
+
+	Jerarquia.setNumero(2);
+	Jerarquia.mostpapa();
+	Jerarquia.crear();
+	Jerarquia.tocarguitarra();
+
+	Jerarquia.setNumero(3);
+	Jerarquia.mosthijo();
+	Jerarquia.jugarvideojuegos();
+	Jerarquia.programar();
+}
