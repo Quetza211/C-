@@ -1,0 +1,752 @@
+// Practica 3
+/*
+AZAEL
+MARITZA
+YAHIR
+*/
+
+#include <iostream>
+using namespace std;
+
+class Pokemon {
+protected:
+	string nombre;
+	string apodo;
+	string color;
+	int ataquemax;
+	int vida;
+
+public:
+	Pokemon() { //Constructor Generico
+		nombre = "Desconocido";
+		apodo = "Desconocido"; //Especie
+		color = "Desconocido";
+		ataquemax = 0;
+		vida = 0;
+	}
+
+	void sanar() {
+		if (vida == 100) {
+			cout << "Tiene toda la vida" << endl;
+		}
+		else {
+			if (vida == 0) {
+				cout << "Ta muerto" << endl;
+			}
+			else {
+				vida = 100;
+				cout << "Se a curado" << endl;
+			}
+		}
+	}
+
+	void evolu_dat(string no, string ap, string co, int at, int vi) {
+		nombre = no;
+		apodo = ap;
+		color = co;
+		ataquemax = at;
+		vida = vi;
+	}
+
+	void mostrar() {
+		cout << "Nombre de el Pokemon: " << nombre << endl;
+		cout << "Nombre de la especie: " << apodo << endl;
+		cout << "Color del Pokemon: " << color << endl;
+		cout << "Ataque Maximo del Pokemon: " << ataquemax << endl;
+		cout << "Vida del Pokemon: " << vida << endl;
+	}
+
+	int interacciones(int num1, int num2) {
+		switch (num1)
+		{
+		case 1:
+			if(num1)
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		case 6:
+
+			break;
+		case 7:
+
+			break;
+		case 8:
+
+			break;
+		case 9:
+
+			break;
+		case 10:
+
+			break;
+		case 11:
+
+			break;
+		case 12:
+
+			break;
+		case 13:
+
+			break;
+		case 14:
+
+			break;
+		case  15:
+
+			break;
+		case 16:
+
+			break;
+		case 17:
+
+			break;
+		case 18:
+
+			break;
+		default:
+			break;
+		}
+	}
+
+	//Funciones GET Y SET
+	string getNombre() { return nombre; }
+	void setNombre(string _nombre) { nombre = _nombre; }
+
+	string getApodo() { return apodo; }
+	void setApodo(string _apodo) { apodo = _apodo; }
+
+	string getColor() { return color; }
+	void setColor(string _color) { color = _color; }
+
+	int getAtaquemax() { return ataquemax; }
+	void setAtaquemax(int _ataquemax) { ataquemax = _ataquemax; }
+
+	int getVida() { return vida; }
+	void setVida(int _vida) { vida = _vida; }
+
+	~Pokemon() {
+		cout << nombre << " ha sido eliminado" << endl;
+	}
+};
+void peleapokemon(int vida1, int vida2, string nombre1, string nombre2, int ata1, int ata2,int num1,int num2) { //Funcion para pelear
+	
+	cout << "Comienza la batalla pokemon" << endl;
+	while (vida1 > 0 || vida2 > 0) {
+		int min = 0;
+		int numAl = 0;
+		// Numero Aleatorio
+		srand(static_cast<unsigned>(time(nullptr)));
+		numAl = min + (rand() % (ata1 - min + 1));
+		vida2 -= numAl;
+
+		cout << nombre1 << " utilizo golpe: " << numAl << " de danio" << endl;
+		cout << nombre2 << " vida: " << vida2 << endl;
+
+		if (vida2 > 0) {//Para detener la pelea si el primer pokemon le bajo la vida a 0
+			// Numero Aleatorio
+			srand(static_cast<unsigned>(time(nullptr)));
+			numAl = min + (rand() % (ata2 - min + 1));
+			vida1 -= numAl;									
+
+			cout << nombre2 << " utilizo golpe: " << numAl << " de danio" << endl;
+			cout << nombre1 << " vida: " << vida1 << endl;
+		}
+
+		if (vida1 <= 0 || vida2 <= 0) {
+			break; // Sale del bucle
+		}
+	} //Termina el bucle
+
+	cout << "Vida final de " << nombre1 << ": " << vida1 << endl;
+	cout << "Vida final de " << nombre2 << ": " << vida2 << endl;
+	if (vida1 > 0) {
+		cout << nombre1 << " Gano el Combate" << endl;
+	}
+	else
+	{
+		cout << nombre2 << " Gano el Combate" << endl;
+	}
+	cout << endl;
+}
+class Acero : public Pokemon {
+	//	Meltan
+private:
+	string habilidad;
+	int num;
+public:
+	Acero() { //Constructor Generico
+		habilidad = "Iman";
+		num = 1;
+	}
+	void _habilidad() { //Funcion Propia
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Agua : public Pokemon {
+	//Croconaw
+private:
+	string habilidad;
+	int num;
+public:
+	Agua() {//Constructor Generico
+		habilidad = "Torrente y Potencia Bruta";
+		num = 2;
+	}
+	void _habilidad() {//Funcion Propia
+		cout << "Ataque Final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Bicho : public Pokemon {
+	//Kricketot y Kricetune
+private:
+	string habilidad;
+	int num;
+public:
+	Bicho() {//Contructor Generico
+		habilidad = "Enjambre";
+		num = 3;
+	}
+	void _habilidad() {//Funcion Propia
+		cout << "Ataque Final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Dragon : public Pokemon {
+	//Axew y Fraxure
+private:
+	string habilidad;
+	int num;
+public:
+	Dragon() {//Constructor Gnerico
+		habilidad = "Rivalidad y Rompemoldes";
+		num = 4;
+	}
+	void _habilidad() {//Funcion Propia
+		cout << "Ataque Final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Hielo : public Pokemon {
+	//Regice
+private:
+	string habilidad;
+	int num;
+public:
+	Hielo() {//Constructor Generico
+		habilidad = "Cuerpo Puro";
+		num = 5;
+	}
+	void _habilidad() {//funcion propia
+		cout << "Ataque Final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Normal : public Pokemon {
+	//Arceus
+private:
+	string habilidad;
+	int num;
+public:
+	Normal() {
+		habilidad = "Multitipo";
+		num = 6;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Electrico : public Pokemon {
+	//Zeraora
+private:
+	string habilidad;
+	int num;
+public:
+	Electrico() {
+		habilidad = "Absorbe Electricidad";
+		num = 7;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Fantasma : public Pokemon {
+	//Misdreavus y Mismagius
+private:
+	string habilidad;
+	int num;
+public:
+	Fantasma() {
+		habilidad = "Levitacion";
+		num = 8;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Fuego : public Pokemon {
+	//Cyndaquil »» Quilava
+private:
+	string habilidad;
+	int num;
+public:
+	Fuego() {
+		habilidad = "Mar llamas";
+		num = 9;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Hada : public Pokemon {
+	//Xerneas
+private:
+	string habilidad;
+	int num;
+public:
+	Hada() {
+		habilidad = "Aura Feerica";
+		num = 10;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Lucha : public Pokemon {
+	//Mienfoo »» Mienshao
+private:
+	string habilidad;
+	int num;
+public:
+	Lucha() {
+		habilidad = "Regeneracion";
+		num = 11;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Planta : public Pokemon {
+	//Treecko »» Grovyle
+private:
+	string habilidad;
+	int num;
+public:
+	Planta() {
+		habilidad = "Espesura";
+		num = 12;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Psiquico : public Pokemon {
+	//Abra »» Kadabra
+private:
+	string habilidad;
+	int num;
+public:
+	Psiquico() {
+		habilidad = "Sincronia";
+		num = 13;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Siniestro : public Pokemon {
+	//Zorua »» Zoroark
+private:
+	string habilidad;
+	int num;
+public:
+	Siniestro() {
+		habilidad = "Ilusion";
+		num = 14;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Veneno : public Pokemon {
+	//Grimer »» Muk
+private:
+	string habilidad;
+	int num;
+public:
+	Veneno() {
+		habilidad = "Viscosidad";
+		num = 15;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Roca : public Pokemon {
+	//Rockruff »» lyncanroc
+private:
+	string habilidad;
+	int num;
+public:
+	Roca() {
+		habilidad = "Impetu Arena";
+		num = 16;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Tierra : public Pokemon {
+	//Sandshrew »» Sandslash 
+private:
+	string habilidad;
+	int num;
+public:
+	Tierra() {
+		habilidad = "Velo Arena";
+		num = 17;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+
+class Volador : public Pokemon {
+	//Tornadus
+private:
+	string habilidad;
+	int num;
+public:
+	Volador() {
+		habilidad = "Bromista";
+		num = 18;
+	}
+	void _habilidad() {
+		cout << "Ataque final: " << habilidad << endl;
+	}
+	//Funcion Get
+	int getNum() { return num; }
+};
+void main() {
+	//Primera pelea Pokemon
+	cout << "------Peleas Pokemon------" << endl;
+	cout << "Primera Pelea" << endl;
+
+	//Meltan »» Melmetal
+	Acero Meltan;
+	Meltan.evolu_dat("Meltan", "Tuerca", "Gris", 65, 100); //Se agrega Datos
+	Meltan.mostrar();
+	cout << endl;
+
+	cout << Meltan.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Meltan.evolu_dat("Melmetal", "Tuerca", "Gris", 143, 100);
+	Meltan.mostrar();
+	Meltan._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Totodile »» Croconaw
+	Agua Totodile;
+	Totodile.evolu_dat("Tododile", "Fauces", "Azul", 65, 100);
+	Totodile.mostrar();
+	cout << endl;
+
+	cout << Totodile.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Totodile.evolu_dat("Croconaw", "Fauces", "Azul", 80, 100);
+	Totodile.mostrar();
+	Totodile._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Meltan y Totodile
+	peleapokemon(Meltan.getVida(), Totodile.getVida(), Meltan.getNombre(), Totodile.getNombre(), Meltan.getAtaquemax(), Totodile.getAtaquemax(), Meltan.getNum(), Totodile.getNum());
+	cout << "*********\n" << endl;
+
+	//Segunda pelea Pokemon
+	cout << "Segunda Pelea" << endl;
+	// Kricketot »» Kricetune
+	Bicho Kricketot;
+	Kricketot.evolu_dat("Kricketot", "Grillo", "Rojo", 25, 100);
+	Kricketot.mostrar();
+	cout << endl;
+
+	cout << Kricketot.getNombre() << "ha evolucionado" << endl; //Poner cuando queramos evolucionar
+	Kricketot.evolu_dat("Kricetune", "Grillo", "Rojo", 85, 100);
+	Kricketot.mostrar();
+	Kricketot._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Axew »» Fraxure
+	Dragon Axew;
+	Axew.evolu_dat("Axew", "Colmillo", "Verde", 87, 100);
+	Axew.mostrar();
+	cout << endl;
+
+	cout << Axew.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Axew.evolu_dat("Fraxure", "Bocahacha", "Verde", 117, 100);
+	Axew.mostrar();
+	Axew._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Kricketot y Axew
+	peleapokemon(Kricketot.getVida(), Axew.getVida(), Kricketot.getNombre(), Axew.getNombre(), Kricketot.getAtaquemax(), Axew.getAtaquemax(),Kricketot.getNum(),Axew.getNum());
+	cout << "*********\n" << endl;
+
+	//Tercera pelea Pokemon
+	cout << "Tercera Pelea" << endl;
+	//Regice
+	Hielo Regice;
+	Regice.evolu_dat("Regice", "Iceberg", "Azul", 50, 100);
+	Regice.mostrar();
+	Regice._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Arceus
+	Normal Arceus;
+	Arceus.evolu_dat("Arceus", "Alfa", "Gris", 120, 100);
+	Arceus.mostrar();
+	Arceus._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Regice y Arceus
+	peleapokemon(Regice.getVida(), Arceus.getVida(), Regice.getNombre(), Arceus.getNombre(), Regice.getAtaquemax(), Arceus.getAtaquemax(),Regice.getNum(),Arceus.getNum());
+	cout << "*********\n" << endl;
+
+	//Cuarta pelea Pokemon
+	cout << "Cuarta Pelea" << endl;
+	//Zeraora
+	Electrico Zeraora;
+	Zeraora.evolu_dat("Zeraora", "Fulgor", "Amarillo", 112, 100);
+	Zeraora.mostrar();
+	Zeraora._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Misdreavus »» Mismagius
+	Fantasma Misdreavus;
+	Misdreavus.evolu_dat("Misdreavus", "Chirrido", "Gris", 60, 100); //Se agrega Datos
+	Misdreavus.mostrar();
+	cout << endl;
+
+	cout << Misdreavus.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Misdreavus.evolu_dat("Mismagius", "Magico", "Morado", 60, 100);
+	Misdreavus.mostrar();
+	Misdreavus._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Zeraora y Misdreavus
+	peleapokemon(Zeraora.getVida(), Misdreavus.getVida(), Zeraora.getNombre(), Misdreavus.getNombre(), Zeraora.getAtaquemax(), Misdreavus.getAtaquemax(),Zeraora.getNum(),Misdreavus.getNum());
+	cout << "*********\n" << endl;
+
+	//Quinta pelea Pokemon
+	cout << "Quinta Pelea" << endl;
+	//Cyndaquil »» Quilava
+	Fuego Cyndaquil;
+	Cyndaquil.evolu_dat("Cyndaquil", "Ratonfuego", "Amarillo", 52, 100); //Se agrega Datos
+	Cyndaquil.mostrar();
+	cout << endl;
+
+	cout << Cyndaquil.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Cyndaquil.evolu_dat("Quilava", "Volcan", "Amarillo", 64, 100);
+	Cyndaquil.mostrar();
+	Cyndaquil._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Xerneas
+	Hada Xerneas;
+	Xerneas.evolu_dat("Xerneas", "Creacion", "Azul", 131, 100);
+	Xerneas.mostrar();
+	Xerneas._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Cyndaquil y Xerneas
+	peleapokemon(Cyndaquil.getVida(), Xerneas.getVida(), Cyndaquil.getNombre(), Xerneas.getNombre(), Cyndaquil.getAtaquemax(), Xerneas.getAtaquemax(),Cyndaquil.getNum(),Xerneas.getNum());
+	cout << "*********\n" << endl;
+
+	//Sexta pelea Pokemon
+	cout << "Sexta Pelea" << endl;
+	//Mienfoo »» Mienshao
+	Lucha Mienfoo;
+	Mienfoo.evolu_dat("Mienfoo", "Artemarcial", "Amarillo", 85, 100); //Se agrega Datos
+	Mienfoo.mostrar();
+	cout << endl;
+
+	cout << Mienfoo.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Mienfoo.evolu_dat("Mienshao", "Artemarcial", "Morado", 125, 100);
+	Mienfoo.mostrar();
+	Mienfoo._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Treecko »» Grovyle
+	Planta Treecko;
+	Treecko.evolu_dat("Treecko", "Geco Bosque", "Verde", 45, 100); //Se agrega Datos
+	Treecko.mostrar();
+	cout << endl;
+
+	cout << Treecko.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Treecko.evolu_dat("Grovyle", "Geco Bosque", "Verde", 65, 100);
+	Treecko.mostrar();
+	Treecko._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Mienfoo y Treecko
+	peleapokemon(Mienfoo.getVida(), Treecko.getVida(), Mienfoo.getNombre(), Treecko.getNombre(), Mienfoo.getAtaquemax(), Treecko.getAtaquemax(),Mienfoo.getNum(),Treecko.getNum());
+	cout << "*********\n" << endl;
+
+	//Septima pelea Pokemon
+	cout << "Septima Pelea" << endl;
+	//Abra »» Kadabra
+	Psiquico Abra;
+	Abra.evolu_dat("Abra", "Psi", "Marron", 20, 100); //Se agrega Datos
+	Abra.mostrar();
+	cout << endl;
+
+	cout << Abra.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Abra.evolu_dat("Kadabra", "Psi", "Marron", 35, 100);
+	Abra.mostrar();
+	Abra._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Zorua »» Zoroark
+	Siniestro Zorua;
+	Zorua.evolu_dat("Zorua", "Zorropillo", "Gris", 65, 100); //Se agrega Datos
+	Zorua.mostrar();
+	cout << endl;
+
+	cout << Zorua.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Zorua.evolu_dat("Zoroark", "Disfrazorro", "Gris", 105, 100);
+	Zorua.mostrar();
+	Zorua._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Abra y Zorua
+	peleapokemon(Abra.getVida(), Zorua.getVida(), Abra.getNombre(), Zorua.getNombre(), Abra.getAtaquemax(), Zorua.getAtaquemax(),Abra.getNum(),Zorua.getNum());
+	cout << "*********\n" << endl;
+
+	//Octava pelea
+	cout << "Octava Pelea" << endl;
+	//Grimer »» Muk
+	Veneno Grimer;
+	Grimer.evolu_dat("Grimer", "Lodo", "Morado", 80, 100); //Se agrega Datos
+	Grimer.mostrar();
+	cout << endl;
+
+	cout << Grimer.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Grimer.evolu_dat("Muk", "Lodo", "Morado", 105, 100);
+	Grimer.mostrar();
+	Grimer._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Rockruff »» Lyncaroc
+	Roca Rockruff;
+	Rockruff.evolu_dat("Rockruff", "Perrito", "Gris", 65, 100); //Se agrega Datos
+	Rockruff.mostrar();
+	cout << endl;
+
+	cout << Rockruff.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Rockruff.evolu_dat("Lyncaroc", "Lobo", "Gris", 115, 100);
+	Rockruff.mostrar();
+	Rockruff._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Grimer y Rockruff
+	peleapokemon(Grimer.getVida(), Rockruff.getVida(), Grimer.getNombre(), Rockruff.getNombre(), Grimer.getAtaquemax(), Rockruff.getAtaquemax(),Grimer.getNum(),Rockruff.getNum());
+	cout << "*********\n" << endl;
+
+	//Novena pelea
+	cout << "Novena Pelea" << endl;
+	//Sandshrew »» Sandslash
+	Tierra Sandshrew;
+	Sandshrew.evolu_dat("Sandshrew", "Raton", "Amarillo", 75, 100); //Se agrega Datos
+	Sandshrew.mostrar();
+	cout << endl;
+
+	cout << Sandshrew.getNombre() << " ha evolucionado" << endl;  //Poner cuando queramos evolucionar
+	Sandshrew.evolu_dat("Sandslash", "Raton", "Amarillo", 100, 100);
+	Sandshrew.mostrar();
+	Sandshrew._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Tornadus
+	Volador Tornadus;
+	Tornadus.evolu_dat("Tordanus", "Torbenillo", "Verde", 115, 100);
+	Tornadus.mostrar();
+	Tornadus._habilidad();
+	cout << endl;
+	cout << "-----------------------\n" << endl;
+
+	//Pelea entre Sandshrew y Tornadus
+	peleapokemon(Sandshrew.getVida(), Tornadus.getVida(), Sandshrew.getNombre(), Tornadus.getNombre(), Sandshrew.getAtaquemax(), Tornadus.getAtaquemax(),Sandshrew.getNum(),Tornadus.getNum());
+	cout << "*********\n" << endl;
+}
