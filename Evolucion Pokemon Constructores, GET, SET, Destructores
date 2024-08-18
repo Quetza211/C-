@@ -1,0 +1,143 @@
+// Práctica 1 Creación de videojuego POKEMON.
+/* Integrantes:
+	1: Maritza Cortes Huelitl 202108890
+	2: Azael Martinez Flores 202137837
+	3: 
+*/
+
+#include <iostream>
+using namespace std;
+
+class Pokemon {
+private: //Atributos
+    char nombre[20], apodo[20], color[15];
+    int ataquemax, vida;
+
+public:
+    Pokemon() { //Constructor Generico
+        strcpy_s(nombre, "Pinguino");
+        strcpy_s(apodo, "Piplup");
+        ataquemax = 112;
+        vida = 100;
+        strcpy_s(color, "Celeste");
+    }
+    Pokemon(char n[20], char apo[20], int atqmax, int vd, char col[15]) {//Constructor Especifico
+        strcpy_s(nombre,n); 
+        strcpy_s(apodo, apo);
+        ataquemax = atqmax;
+        vida = vd;
+        strcpy_s(color,col);
+    }
+
+    void pelea() {
+        srand(static_cast<unsigned>(time(nullptr))); // Da un numero aleatorio cada vez que inicia el programa lo cual esta limitado de 0 a 100(Le baja vida al Pokemon)
+        int min = 0, max = 100;
+        int numAl = min + (rand() % (max - min + 1));
+        vida = vida - numAl;
+
+        if (vida<0) {   //Para que no salga vida negativa se agrega un condicional para que cuando sea menor a 0 le asigne el valor de 0 
+            vida = 0;
+        }
+    }
+
+    void sanarpokemon() {
+        if (vida == 100) {
+            cout << "No se puede curar tiene toda la vida " << endl;
+        }
+        else {
+            if (vida == 0) {
+                cout << "No se puede curar (Esta muerto ;c)" << endl;
+            }
+            else {
+                vida = 100;
+                cout << apodo <<" se a curado\n" << endl;
+            }
+        }
+    }
+
+    void evolucionar() {
+        strcpy_s(nombre, "Pinguino");
+        strcpy_s(apodo, "Prinplup");
+        ataquemax = 150;
+        strcpy_s(color, "Azul");
+    }
+
+    void mostrardatos() {
+        cout << "Nombre del Pokemon: " << apodo << endl;
+        cout << "Nombre de la especie: " << nombre << endl;
+        cout << "Ataque maximo: " << ataquemax << endl;
+        cout << "Vida: " << vida << endl;
+        cout << "Color: " << color << endl;
+        cout << "\n";
+    }
+    //Funciones GET Y SET
+    char* getNombre() { return nombre; } //Muestra datos
+    void setNombre(char n[20]) { strcpy_s(nombre, n); } //Modificar datos
+
+    char* getApodo() { return apodo; }
+    void setApodo(char apo[20]) { strcpy_s(apodo, apo); }
+
+    int getAtaquemax() { return ataquemax; }
+    void setAtaquemax(int atqmax) { ataquemax = atqmax; }
+
+    int getVida() { return vida; }
+    void setVida(int vd) { vida = vd; }
+
+    char* getColor() { return color; }
+    void setColor(char col[15]) { strcpy_s(color, col); }
+
+    ~Pokemon() { // El Destructor se llama al final del main y elimina la informacion
+        cout << apodo << " ha sido borrado con exito" << endl;
+    }
+    };
+
+void main() {
+    Pokemon Piplup;
+    Piplup.mostrardatos();
+
+    Piplup.pelea();
+    cout <<Piplup.getApodo() <<" ha recibido dano\n" << endl;
+    Piplup.mostrardatos();
+
+    Piplup.sanarpokemon();
+    Piplup.mostrardatos();
+
+/*
+    //SI quiere ver como funciona la funcion sanar y pelear quite el comentario 
+
+    Piplup.pelea();
+    cout << Piplup.getApodo() << " ha recibido dano\n" << endl;
+    Piplup.mostrardatos();
+    Piplup.pelea();
+    cout << Piplup.getApodo() << " ha recibido dano\n" << endl;
+    Piplup.mostrardatos();
+    Piplup.sanarpokemon();
+*/
+
+    cout <<Piplup.getApodo() <<" a Evolucionado\n" << endl;
+
+    Piplup.evolucionar();
+
+    Piplup.mostrardatos();
+
+}
+/*
+-Desarrollar la clase POKEMON
+     -Atributos                                    Asi estan declarados el primero es generico y segundo es especifico
+          Nombre (especie)                          declaracion nombre y n
+          Nombre (apodo)                            declaracion apodo y apo
+          Ataque máximo                             declaracion ataquemax y atqmax
+          Vida (limitada de a 100)                  declaracion vida y vd
+          Color (color principal del pokemon)       declaracion color y col
+
+     -Constructor Genérico                              Listo
+     -Constructor Específico                            Listo
+     -Métodos GET y SET para cada atributo              Listo
+     -Funciones
+          -Sanar (vida a 100)                           Listo
+          -Evolucionar (nuevo nombre de especie, nuevo color, aumento en el ataque máximo)      Listo
+     -Destructor                                        Listo
+
+Los entregables de la práctica son un reporte en formato PDF (con la estructura planteada en el formato que se encuentra en los archivos de la clase) y un archivo de texto (.txt) con el código empleado para la práctica.
+
+*/
